@@ -7,9 +7,9 @@ import Teams from './Teams';
 function App() {
   return (
     <Router>
-      <Route to={'/'} component={Home} />
-      <Route to={'/players'} component={Players} />
-      <Route to={'/teams'} component={Teams} />
+      <Route exact path={'/'} component={Home} />
+      <Route path={'/players'} component={Players} />
+      <Route path={'/teams'} component={Teams} />
     </Router>
   );
 }
