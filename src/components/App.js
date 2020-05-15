@@ -7,14 +7,13 @@ import Teams from './Teams';
 
 function App() {
   return (
-    <div>
+    <Router>
       <Nav />
-      <Router>
-        <Route exact path={'/'} component={Home} />
-        <Route path={'/players'} component={Players} />
-        <Route path={'/teams'} component={Teams} />
-      </Router>
-    </div>
+
+      <Route exact path={'/'} component={Home} />
+      <Route path={'/players'} component={Players} />
+      <Route path={'/teams'} component={Teams} />
+    </Router>
   );
 }
 

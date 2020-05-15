@@ -2,6 +2,6 @@ import React, { Component } from 'react';
 
 export default class Players extends Component {
   render() {
-    return <div>Players</div>;
+    return <div className='container two-column'>Players</div>;
   }
 }
