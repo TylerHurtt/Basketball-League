@@ -5,7 +5,7 @@ import { getTeam } from '../api';
 export default class Team extends Component {
   static propTypes = {
     id: PropTypes.string.isRequired,
-    chidren: PropTypes.func.isRequired,
+    children: PropTypes.func.isRequired,
   };
 
   state = {
@@ -17,19 +17,13 @@ export default class Team extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    nextProps !== this.props && this.fetchTeam(this.props.id);
+    nextProps.id !== this.props.id && this.fetchTeam(nextProps.id);
   }
 
   fetchTeam = (id) => {
-    this.setState({
-      team: null,
-    });
+    this.setState(() => ({ team: null }));
 
-    getTeam().then((team) =>
-      this.setState({
-        team,
-      })
-    );
+    getTeam(id).then((team) => this.setState(() => ({ team })));
   };
 
   render() {
