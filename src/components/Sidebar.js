@@ -28,26 +28,24 @@ Sidebar.porpTypes = {
 };
 
 export default function Sidebar({ title, list, loading, match, location }) {
-  return (
+  return loading ? (
+    <h1 className='center'>LOADING...</h1>
+  ) : (
     <div>
       <h3 className='header'>{title}</h3>
-      {loading ? (
-        <h4>LOADING...</h4>
-      ) : (
-        <ul className='sidebar-list'>
-          {list.map((item) => (
-            <CustomLink
-              key={item}
-              to={{
-                pathname: `${match.url}/${slug(item)}`,
-                search: location.search,
-              }}
-            >
-              {item.toUpperCase()}
-            </CustomLink>
-          ))}
-        </ul>
-      )}
+      <ul className='sidebar-list'>
+        {list.map((item) => (
+          <CustomLink
+            key={item}
+            to={{
+              pathname: `${match.url}/${slug(item)}`,
+              search: location.search,
+            }}
+          >
+            {item.toUpperCase()}
+          </CustomLink>
+        ))}
+      </ul>
     </div>
   );
 }
