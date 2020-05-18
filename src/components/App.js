@@ -16,8 +16,8 @@ function App() {
         <Route exact path={'/'} component={Home} />
         <Route path={'/players'} component={Players} />
         <Route path={'/teams'} component={Teams} />
-        <Route path={'/:teamId'} component={TeamPage} />
         <Route path={'/:teamId/articles'} component={Articles} />
+        <Route path={'/:teamId'} component={TeamPage} />
 
         <Route
           render={() => (
