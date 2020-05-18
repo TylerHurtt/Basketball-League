@@ -30,7 +30,6 @@ export default class Players extends Component {
   render() {
     const { players, loading } = this.state;
     const { match, location } = this.props;
-    console.log(players);
     return (
       <div className='container two-column'>
         <Sidebar
