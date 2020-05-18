@@ -29,7 +29,6 @@ export default class Teams extends Component {
         {!loading && location.pathname === '/teams' && (
           <div className='sidebar-instruction'>Select a team</div>
         )}
-        />
       </div>
     );
   }
