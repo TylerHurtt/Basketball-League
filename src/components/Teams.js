@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import Sidebar from './Sidebar';
 import { getTeamNames, getTeam } from '../api';
 import { Route } from 'react-router-dom';
-import { parse } from 'query-string';
 
 export default class Teams extends Component {
   state = {
     teams: [],
     loading: true,
+    selectedTeam: {},
   };
 
   componentDidMount() {
@@ -29,6 +29,13 @@ export default class Teams extends Component {
         {!loading && location.pathname === '/teams' && (
           <div className='sidebar-instruction'>Select a team</div>
         )}
+
+        <Route
+          path={`${match.url}/:teamId`}
+          render={({ match }) => {
+            return <div className='panel'>Team</div>;
+          }}
+        />
       </div>
     );
   }
