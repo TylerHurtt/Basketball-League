@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Route, Link, Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { getTeamsArticles, getTeamNames } from '../api';
-import slug from 'slug';
 import Team from './Team';
 import TeamLogo from './TeamLogo';
 
@@ -26,7 +24,7 @@ export default class TeamPage extends Component {
   }
 
   render() {
-    const { match, location } = this.props;
+    const { match } = this.props;
     const { articles, teamNames, loading } = this.state;
     const { teamId } = match.params;
 
