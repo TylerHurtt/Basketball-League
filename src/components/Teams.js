@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Sidebar from './Sidebar';
-import { getTeamNames, getTeam } from '../api';
-import { Route } from 'react-router-dom';
+import { getTeamNames } from '../api';
+import { Route, Link } from 'react-router-dom';
+import TeamLogo from './TeamLogo';
+import Team from './Team';
 
 export default class Teams extends Component {
   state = {
@@ -32,9 +34,39 @@ export default class Teams extends Component {
 
         <Route
           path={`${match.url}/:teamId`}
-          render={({ match }) => {
-            return <div className='panel'>Team</div>;
-          }}
+          render={({ match }) => (
+            <div className='panel'>
+              <Team id={match.params.teamId}>
+                {(team) =>
+                  !team ? (
+                    <h1>Loading...</h1>
+                  ) : (
+                    <div style={{ width: '100%' }}>
+                      <TeamLogo id={match.params.teamId} className='center' />
+                      <h1 className='medium-header'>{team.name}</h1>
+                      <ul className='info-list row'>
+                        <li className='header'>
+                          Established
+                          <div>{team.established}</div>
+                        </li>
+                        <li className='header'>
+                          Manager
+                          <div>{team.manager}</div>
+                        </li>
+                        <li className='header'>
+                          Coach
+                          <div>{team.coach}</div>
+                        </li>
+                      </ul>
+                      <Link className='center btn-main' to={`/${team.id}`}>
+                        {team.name} Team Page
+                      </Link>
+                    </div>
+                  )
+                }
+              </Team>
+            </div>
+          )}
         />
       </div>
     );
