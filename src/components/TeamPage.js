@@ -47,7 +47,7 @@ export default class TeamPage extends Component {
                   cursor='pointer'
                   to={{
                     pathname: '/players',
-                    search: `?/teamId=${teamId}`,
+                    search: `?teamId=${teamId}`,
                   }}
                 >
                   View Roster
