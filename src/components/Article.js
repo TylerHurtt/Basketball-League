@@ -16,8 +16,12 @@ export default class Article extends Component {
 
   componentDidMount() {
     const { teamId, id } = this.props;
-
     this.fetchArticle(teamId, id);
+  }
+
+  componentDidUpdate(nextProps) {
+    const { teamId, id } = nextProps;
+    nextProps !== this.props && this.fetchArticle(teamId, id);
   }
 
   fetchArticle = (teamId, id) => {
@@ -28,7 +32,6 @@ export default class Article extends Component {
     );
   };
 
-  fetch;
   render() {
     return this.props.children(this.state.article);
   }
