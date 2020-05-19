@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { getArticle } from '../api';
 import PropTypes from 'prop-types';
+import Loading from './Loading';
 
 export default class Article extends Component {
   static propTypes = {
