@@ -14,7 +14,7 @@ export default class Articles extends Component {
     getTeamsArticles(match.params.teamId).then((articles) =>
       this.setState(() => ({
         loading: false,
-        articles,
+        articles: articles.map((article) => article.title),
       }))
     );
   }
@@ -27,7 +27,7 @@ export default class Articles extends Component {
     ) : (
       <div className='container two-column'>
         <Sidebar
-          list={articles.map((article) => article.title)}
+          list={articles}
           loading={loading}
           title='Articles'
           {...this.props}
