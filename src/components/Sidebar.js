@@ -6,7 +6,7 @@ import { Link, Route } from 'react-router-dom';
 function CustomLink({ to, children }) {
   return (
     <Route
-      to={to.pathname}
+      path={to.pathname}
       children={({ match }) => (
         <li
           style={{
