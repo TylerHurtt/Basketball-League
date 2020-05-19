@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 export default class Loading extends Component {
   static propTypes = {
     text: PropTypes.string.isRequired,
-    speed: PropTypes.string.isRequired,
+    speed: PropTypes.number.isRequired,
   };
 
   static defaultProps = {
@@ -13,16 +13,16 @@ export default class Loading extends Component {
   };
 
   state = {
-    display: this.props.display,
+    text: this.props.text,
   };
 
   componentDidMount() {
     const stop = this.props.text + '...';
-    this.interval = setInterval(
+    this.interval = setInterval(() => {
       this.state.text !== stop
-        ? this.setState(({ text }) => ({ text: text + '.' }), this.props.speed)
-        : this.setState({ text: this.props.text })
-    );
+        ? this.setState(({ text }) => ({ text: text + '.' }))
+        : this.setState({ text: this.props.text });
+    }, this.props.speed);
   }
 
   componentWillUnmount() {
@@ -32,7 +32,7 @@ export default class Loading extends Component {
   render() {
     return (
       <div className='container'>
-        <p classname='text-center'>{this.state.text}</p>
+        <p className='text-center'>{this.state.text}</p>
       </div>
     );
   }
