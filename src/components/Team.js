@@ -16,7 +16,7 @@ export default class Team extends Component {
     this.fetchTeam(this.props.id);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(nextProps) {
     nextProps.id !== this.props.id && this.fetchTeam(nextProps.id);
   }
 
