@@ -20,8 +20,8 @@ export default class Article extends Component {
   }
 
   componentDidUpdate(nextProps) {
-    const { teamId, id } = nextProps;
-    nextProps !== this.props && this.fetchArticle(teamId, id);
+    nextProps.id !== this.props.id &&
+      this.fetchArticle(nextProps.teamId, nextProps.id);
   }
 
   fetchArticle = (teamId, id) => {
